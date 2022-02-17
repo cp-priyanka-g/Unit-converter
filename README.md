@@ -2,6 +2,6 @@
 Converting Feet to meter,centimeter and kilometer.
 
 Steps:
-1. Input Any value in feet.
-2. Press Enter.
-3. Coverted value will display below in meter, centimeter and kilometers.
+1. Input Any value.
+2. Select the SI unit From and To .
+3. You will get Desire Coverted value and  will display below.
