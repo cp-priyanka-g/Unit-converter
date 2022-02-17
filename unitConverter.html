@@ -1,27 +1,83 @@
 <!DOCTYPE html>
 <html>
 <title>Feet to Length Converter</title>
+
 <body>
-
-<h2>Length Converter</h2>
-<p>Type a value in the Feet field to convert the value to Meters:</p>
-
-<p>
-  <label>Feet</label>
-  <input id="inputFeet" type="number" placeholder="Feet" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
-</p>
-
-<p>Centimeter: <span id="outputcm"></span></p>
-<p>Meters: <span id="outputMeters"></span></p>
-<p>Kilometers: <span id="outputKilometers"></span></p>
+  <form method="get">
+    <h2>Length Converter</h2>
+    <p>Type a value in the Feet field to convert the value to Meters:</p>
 
 
-<script>
-function LengthConverter(valNum) {
-  document.getElementById("outputcm").innerHTML=valNum/0.032808;
-  document.getElementById("outputMeters").innerHTML=valNum/3.2808;
-  document.getElementById("outputKilometers").innerHTML=valNum/3280.8;
-}
-</script>
+    <input id="inputValue" type="number" placeholder="Input Value">
+
+    <label>From:</label>
+    <select name="selectUnit1" id="selected1" onchange="LengthConverter()">
+      <option value=" ">Select Unit</option>
+      <option value="cm">Centimeter</option>
+      <option value="mt">Meter</option>
+      <option value="km">Kilometer</option>
+    </select>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <label>To</label>
+
+    <select name="selectUnit2" id="selected2" onchange="LengthConverter()">
+      <option value=" ">Select Unit</option>
+      <option value="cm">Centimeter</option>
+      <option value="mt">Meter</option>
+      <option value="km">Kilometer</option>
+    </select>
+    <p>Converted Value:</p>
+    <p id="outputValue"></p>
+   
+  </form>
+
+
+
+  <script>
+    function LengthConverter() {
+
+      var val = document.getElementById("inputValue").value;
+      var selectFrom = document.getElementById("selected1").value;
+      var selectTo = document.getElementById("selected2").value;
+
+      // CM to Other Unites
+
+      if (selectFrom == "cm" && selectTo == "cm") {
+        document.getElementById("outputValue").innerHTML = val * 1;
+      }
+      if (selectFrom == "cm" && selectTo == "mt") {
+        document.getElementById("outputValue").innerHTML = val / 100;
+      }
+      if (selectFrom == "cm" && selectTo == "km") {
+        document.getElementById("outputValue").innerHTML = val / 100000;
+      }
+
+      // Meter to other unites
+      if (selectFrom == "mt" && selectTo == "cm") {
+        document.getElementById("outputValue").innerHTML = val / 0.01;
+      }
+      if (selectFrom == "mt" && selectTo == "mt") {
+        document.getElementById("outputValue").innerHTML = val * 1;
+      }
+      if (selectFrom == "mt" && selectTo == "km") {
+        document.getElementById("outputValue").innerHTML = val / 1000;
+      }
+
+
+      //Kilometer to other Unites
+      if (selectFrom == "km" && selectTo == "cm") {
+        document.getElementById("outputValue").innerHTML = val * 100000;
+      }
+      if (selectFrom == "km" && selectTo == "mt") {
+        document.getElementById("outputValue").innerHTML = val * 1000;
+      }
+      if (selectFrom == "km" && selectTo == "km") {
+        document.getElementById("outputValue").innerHTML = val * 1;
+      }
+
+
+    }
+  </script>
 </body>
+
 </html>
